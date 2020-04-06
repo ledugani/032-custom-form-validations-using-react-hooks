@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function App({}) {
-  return <div>Hello React App</div>
+  const [email, setEmail] = useState("");
+
+  return <div>
+    <input
+      type="text"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+  </div>
 }
