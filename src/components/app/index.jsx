@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function App({}) {
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    console.dir("fired!!!")
+  }, [])
 
   return <div>
     <input
