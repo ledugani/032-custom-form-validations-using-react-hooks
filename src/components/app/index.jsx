@@ -5,7 +5,7 @@ export default function App({}) {
   const [fullName, setFullName] = useState("");
 
   useEffect(() => {
-    console.dir(email)
+    console.dir(email, fullName)
   }, [email, fullName])
 
   return (
