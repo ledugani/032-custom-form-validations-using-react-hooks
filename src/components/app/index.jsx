@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 export default function App({}) {
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
+  const formDefaultValues = {
+    email: "",
+    fullName: ""
+  }
+  const [formValues, setFormValues] = useState({formDefaultValues});
+  const { email, fullName } = formValues;
 
   useEffect(() => {
     console.dir(email, fullName)
-  }, [email, fullName])
+  }, [formValues])
+
+  function handleChange(e) {
+    const target = e.target;
+    setFormValues(prevState => ({
+      ...prevState,
+      [target.name]: target.value
+    }))
+  }
 
   return (
     <div>
@@ -14,7 +26,8 @@ export default function App({}) {
         <input
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name={"email"}
+          onChange={handleChange}
           placeholder="Your email"
         />
       </div>
@@ -23,8 +36,9 @@ export default function App({}) {
         <input
           type="text"
           value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-          placeholder="Full name"
+          name={"fullName"}
+          onChange={handleChange}
+        placeholder="Full name"
         />
       </div>
     </div>
