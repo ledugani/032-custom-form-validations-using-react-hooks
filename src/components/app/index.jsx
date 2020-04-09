@@ -4,8 +4,8 @@ export default function App({}) {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    console.dir("fired!!!")
-  }, [])
+    console.dir(email)
+  }, [email])
 
   return <div>
     <input
