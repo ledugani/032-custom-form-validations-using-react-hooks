@@ -1,17 +1,46 @@
 import React, { useState, useEffect } from "react";
 
 export default function App({}) {
-  const [email, setEmail] = useState("");
+  const formDefaultValues = {
+    email: "",
+    fullName: ""
+  }
+  const [formValues, setFormValues] = useState({formDefaultValues});
+  const { email, fullName } = formValues;
 
   useEffect(() => {
-    console.dir("fired!!!")
-  }, [])
+    console.dir(email, fullName)
+  }, [formValues])
 
-  return <div>
-    <input
-      type="text"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-  </div>
+  function handleChange(e) {
+    const target = e.target;
+    setFormValues(prevState => ({
+      ...prevState,
+      [target.name]: target.value
+    }))
+  }
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          value={email}
+          name={"email"}
+          onChange={handleChange}
+          placeholder="Your email"
+        />
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={fullName}
+          name={"fullName"}
+          onChange={handleChange}
+        placeholder="Full name"
+        />
+      </div>
+    </div>
+  )
 }
